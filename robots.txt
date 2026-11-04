@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /
+
+# This directory is private to the SDSVG community and must not be indexed,
+# cached, or used to train AI models. Pages also send noindex via meta tag and
+# the X-Robots-Tag HTTP header.

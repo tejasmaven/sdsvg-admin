@@ -1,0 +1,183 @@
+/**
+ * SDSVG Admin Panel — Custom Stylesheet
+ * All custom classes use the sdsvg- prefix.
+ * Loaded after Bootstrap 5.3.
+ */
+
+/* ── Sidebar ──────────────────────────────────────────────────────────────── */
+.sdsvg-sidebar {
+    width: 240px;
+    background: #222d32;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sdsvg-nav-link {
+    color: #b8c7ce;
+    padding: 10px 16px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: background .15s, color .15s;
+    cursor: pointer;
+}
+
+.sdsvg-nav-link:hover {
+    background: #1e282c;
+    color: #fff;
+    border-left-color: #3c8dbc55;
+}
+
+.sdsvg-sidebar-active {
+    border-left: 3px solid #3c8dbc !important;
+    color: #fff !important;
+    background: #1e282c !important;
+    padding-left: 15px !important;
+}
+
+/* ── Stat cards ───────────────────────────────────────────────────────────── */
+.sdsvg-stat-blue {
+    background: linear-gradient(135deg, #3c8dbc, #2a7da8);
+    color: #fff;
+}
+
+.sdsvg-stat-green {
+    background: linear-gradient(135deg, #28a745, #1e8a37);
+    color: #fff;
+}
+
+.sdsvg-stat-orange {
+    background: linear-gradient(135deg, #fd7e14, #e06c0a);
+    color: #fff;
+}
+
+.sdsvg-stat-red {
+    background: linear-gradient(135deg, #dc3545, #c2293a);
+    color: #fff;
+}
+
+.sdsvg-stat-purple {
+    background: linear-gradient(135deg, #6f42c1, #59309e);
+    color: #fff;
+}
+
+.sdsvg-stat-teal {
+    background: linear-gradient(135deg, #17a2b8, #118597);
+    color: #fff;
+}
+
+.sdsvg-stat-pink {
+    background: linear-gradient(135deg, #e83e8c, #c82a72);
+    color: #fff;
+}
+
+.sdsvg-stat-slate {
+    background: linear-gradient(135deg, #5a6775, #434e59);
+    color: #fff;
+}
+
+/* ── Primary member card ──────────────────────────────────────────────────── */
+.sdsvg-primary-card {
+    background: #f0f7ff;
+    border: 1px solid #c5dff4;
+    border-radius: 4px;
+}
+
+/* ── No-head banner ───────────────────────────────────────────────────────── */
+.sdsvg-no-head {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    font-weight: 600;
+}
+
+/* ── Import row states ────────────────────────────────────────────────────── */
+.sdsvg-import-valid {
+    background: #d4f0db !important;
+    color: #155724;
+}
+
+.sdsvg-import-error {
+    background: #fad7db !important;
+    color: #721c24;
+}
+
+.sdsvg-import-warn {
+    background: #fff3cd !important;
+    color: #856404;
+}
+
+/* ── Section titles ───────────────────────────────────────────────────────── */
+.sdsvg-section-title {
+    color: #3c8dbc;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    border-bottom: 2px solid #3c8dbc;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+/* ── Session expiry warning banner ───────────────────────────────────────── */
+.sdsvg-session-warning {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff3cd;
+    border-top: 2px solid #ffc107;
+    color: #856404;
+    text-align: center;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    z-index: 9999;
+    box-shadow: 0 -2px 8px rgba(0,0,0,.1);
+}
+
+/* ── Breadcrumb ───────────────────────────────────────────────────────────── */
+.breadcrumb {
+    font-size: 13px;
+}
+
+/* ── Button extra-small ───────────────────────────────────────────────────── */
+.btn-xs {
+    padding: .1rem .45rem;
+    font-size: .75rem;
+    border-radius: .2rem;
+}
+
+/* ── Content area padding on mobile ──────────────────────────────────────── */
+@media (max-width: 767px) {
+    .sdsvg-sidebar {
+        display: none;
+    }
+    .content {
+        padding: 1rem !important;
+    }
+}
+
+/* ── Table tweaks ─────────────────────────────────────────────────────────── */
+.table th {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: #666;
+    white-space: nowrap;
+}
+
+/* ── Card header subtle ───────────────────────────────────────────────────── */
+.card-header strong {
+    font-size: 14px;
+}
+
+/* ── Tab pane ─────────────────────────────────────────────────────────────── */
+.tab-pane.active-tab {
+    display: block !important;
+}
