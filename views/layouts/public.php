@@ -31,6 +31,12 @@
         .pub-result { border:1px solid #d7dee7; border-radius:10px; padding:14px 16px;
                     margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
         .pub-result:hover { border-color:var(--pub-blue); }
+        /* Let the name wrap without pushing the button; keep the button one fixed size */
+        .pub-result > .pub-result-info { flex:1 1 auto; min-width:0; }
+        .pub-result > .pub-result-info > div { word-break:break-word; }
+        .pub-result .pub-result-btn { flex:0 0 auto; align-self:center; white-space:nowrap;
+                    min-width:104px; padding:10px 16px; display:inline-flex;
+                    align-items:center; justify-content:center; gap:4px; }
         .pub-member { border:1px solid #d7dee7; border-radius:10px; padding:14px 16px; margin-bottom:14px; background:#fbfcfe; }
         .pub-member:last-child { margin-bottom:0; }
         .pub-badge-head { background:#2c6cb0; color:#fff; font-size:13px; padding:3px 8px; border-radius:6px; }
