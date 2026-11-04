@@ -1,9 +1,14 @@
 # SDSVG Admin Panel — Apache Configuration
 
-# PHP settings
-php_value max_execution_time    120
-php_value upload_max_filesize   12M
-php_value post_max_size         14M
+# PHP settings — only applied when PHP runs as an Apache module (mod_php).
+# On FastCGI / PHP-FPM / LiteSpeed these directives would cause a 500 error,
+# so they are guarded. If they don't take effect on your host, set the same
+# values in php.ini instead.
+<IfModule mod_php.c>
+    php_value max_execution_time    120
+    php_value upload_max_filesize   12M
+    php_value post_max_size         14M
+</IfModule>
 
 # Security headers
 <IfModule mod_headers.c>
@@ -12,25 +17,29 @@ php_value post_max_size         14M
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# Block direct access to sensitive directories and files
-<FilesMatch "^(config\.php|setup\.php)$">
-    Order allow,deny
-    Deny from all
+# Block direct access to sensitive files
+<FilesMatch "^(config\.php|config\.local\.php|setup\.php)$">
+    Require all denied
 </FilesMatch>
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /sdsvg-admin/
 
-    # Force HTTPS on production (comment out for local development)
+    # RewriteBase is intentionally NOT hardcoded so the app works at the domain
+    # root OR in any sub-folder without editing. Apache resolves the relative
+    # "index.php" target against this .htaccess file's own directory.
+    # If (and only if) routing misbehaves on your host, uncomment the next line
+    # and set it to the URL path this folder is served at, e.g. "/" or "/sdsvg/":
+    # RewriteBase /sdsvg-admin/
+
+    # Force HTTPS on production (uncomment both lines once your SSL works)
     # RewriteCond %{HTTPS} off
-    # RewriteCond %{HTTP_HOST} !^localhost [NC]
     # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
     # Block access to sensitive directories
     RewriteRule ^(app|database|lib)(/|$) - [F,L]
 
-    # Allow real files and directories to be served directly (CSS, JS, images)
+    # Serve real files/directories directly (CSS, JS, images, uploads)
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
@@ -41,8 +50,7 @@ php_value post_max_size         14M
 # Prevent directory listing
 Options -Indexes
 
-# Deny access to hidden files
+# Deny access to hidden files (.git, .htaccess, .env, etc.)
 <FilesMatch "^\.">
-    Order allow,deny
-    Deny from all
+    Require all denied
 </FilesMatch>
